@@ -1,0 +1,77 @@
+[
+    {
+      "property": "question1",
+      "text": "What is your name?*",
+      "type": "input",
+      "options": {
+        "type": "text",
+        "validations": {
+          "min": {
+            "value": 3,
+            "message": "Input needs to be at least 3 characters"
+          }
+        },
+        "placeholder": "Enter the text."
+      },
+      "required": true
+    },
+    {
+      "property": "question2",
+      "text": "What is your favorite number between 3 and 40?",
+      "type": "input",
+      "options": {
+        "type": "number",
+        "validations": {
+          "min": {
+            "value": 3,
+            "message": "Minimum value is 3"
+          },
+          "max": {
+            "value": 40,
+            "message": "Maximum value is 40"
+          }
+        },
+        "placeholder": "Enter a number"
+      }
+    },
+    {
+      "property": "question4",
+      "text": "What is your favorite time of year?",
+      "type": "options",
+      "options": {
+        "multiSelect": false,
+        "list": [
+          {
+            "id": 1,
+            "value": "Winter"
+          },
+          {
+            "id": 2,
+            "value": "Spring"
+          },
+          {
+            "id": 3,
+            "value": "Summer"
+          },
+          {
+            "id": 4,
+            "value": "Fall"
+          }
+        ]
+      }
+    },
+    {
+      "property": "question6",
+      "text": "Which randomly generated list items do you like the most?",
+      "type": "options",
+      "options": {
+        "multiSelect": true,
+        "api": {
+          "url": "https://jsonplaceholder.typicode.com/todos"
+        },
+        "keys": {
+          "value": "title"
+        }
+      }
+    }
+  ]
