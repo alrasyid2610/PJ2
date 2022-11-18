@@ -127,7 +127,7 @@ export default {
     },
     created() {
         this.columns = [
-            {field: 'pc_name', header: 'PC Name'},
+            {field: 'pc_name', header: 'PC NAME2'},
             {field: 'processor', header: 'Processor'},
             {field: 'os', header: 'Os'},
             {field: 'ram', header: 'RAM'},
