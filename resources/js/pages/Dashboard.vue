@@ -60,14 +60,14 @@
                                     placeholder="Select Columns" style="width: 20em"/>
                             </div>
                         </template>
-                        <Column field="pc_name" header="pc_name" style="min-width:12rem">
+                        <!-- <Column field="pc_name" header="pc_name" style="min-width:12rem">
                             <template #body="{data}">
                                 {{data.pc_name}}
                             </template>
                             <template #filter="{filterModel,filterCallback}">
                                 <InputText type="text" v-model="filterModel.value" @keydown.enter="filterCallback()" class="p-column-filter" :placeholder="`Search by name - `" v-tooltip.top.focus="'Hit enter key to filter'"/>
                             </template>
-                        </Column>
+                        </Column> -->
                         <!-- <Column field="code" header="Code" /> -->
                         <Column v-for="(col, index) of selectedColumns" :field="col.field" :header="col.header" :key="col.field + '_' + index"></Column>
                         <!-- <Column v-for="col of columns" :field="col.field" :header="col.header" :key="col.field"></Column> -->
