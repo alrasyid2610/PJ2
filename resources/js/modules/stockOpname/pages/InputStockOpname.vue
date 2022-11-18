@@ -126,6 +126,7 @@ export default {
                 name: [false, 'Username is not available.'],
                 email: [false, 'Username is not available.'],
                 section: [false, 'Username is not available.'],
+                ip: [false, 'Username is not available.'],
                 factory: [false, 'Username is not available.'],
             }
         }
@@ -221,9 +222,6 @@ export default {
 
             console.log("submit");
 
-            console.log(this.user);
-            console.log(this.computer);
-
             // console.log(that.users.location.name);
 
             axios.post('http://127.0.0.1:8000/api/stock-opname/', {
@@ -240,20 +238,31 @@ export default {
 
                 // not success
                 if(!success) {
-                    that.errors.name[0] = data.name != undefined ? true : false
-                    that.errors.name[1] = data.name != undefined ? data.name[0] : false
+                    // console.log("kocak bgt ni")
+                    // console.log(data['user.email'][0] != undefined)
+                    that.validation.email.error = data['user.email'] != undefined ? true : false
+                    that.validation.email.message2 = that.validation.email.error ? data['email.ip'][0] : ''
+                    that.validation.ip.error = data['computer.ip'] != undefined ? true : false
+                    that.validation.ip.message2 = that.validation.ip.error ? data['computer.ip'][0] : ''
+                    that.validation.pc_name.error = data['computer.pc_name'] != undefined ? true : false
+                    that.validation.pc_name.message2 = that.validation.pc_name.error ? data['computer.pc_name'][0] : ''
 
-                    that.errors.email[0] = data.email != undefined ? true : false
-                    that.errors.email[1] = data.email != undefined ? data.email[0] : false
+                    // that.errors.name[1] = data.name != undefined ? data.name[0] : false
 
-                    that.errors.section[0] = data.section != undefined ? true : false
-                    that.errors.section[1] = data.section != undefined ? data.section[0] : false
+                    // that.errors.email[0] = data.email != undefined ? true : false
+                    // that.errors.email[1] = data.email != undefined ? data.email[0] : false
 
-                    that.errors.factory[0] = data.location != undefined ? true : false
-                    that.errors.factory[1] = data.location != undefined ? data.location[0] : false
+                    // that.errors.section[0] = data.section != undefined ? true : false
+                    // that.errors.section[1] = data.section != undefined ? data.section[0] : false
+
+                    // that.errors.factory[0] = data.location != undefined ? true : false
+                    // that.errors.factory[1] = data.location != undefined ? data.location[0] : false
                     that.$toast.add({severity:'error', summary: 'Error', detail: message, life: 3000});
                     // console.log(that.users);
                 } else {
+                    that.validation.pc_name.error = false
+                    that.validation.ip.error = false
+                    // that.validation.pc_name.error = false
                     that.errors = {
                             name: [false, 'Username is not available.'],
                             email: [false, 'Username is not available.'],
@@ -292,7 +301,7 @@ export default {
                     }
 
                     that.$toast.add({severity:'success', summary: 'Success', detail: message, life: 3000});
-
+                    location.reload()
                 }
             })
             .catch(function (error) {
@@ -306,11 +315,11 @@ export default {
         // console.log(this.users);
 
 
-        Echo.channel('messeage')
-            .listen('ComputerUserCreated', (e) => {
-                this.data_computers = JSON.parse(e.message);
-                console.log(this.data_computers);
-            });
+        // Echo.channel('messeage')
+        //     .listen('ComputerUserCreated', (e) => {
+        //         this.data_computers = JSON.parse(e.message);
+        //         console.log(this.data_computers);
+        //     });
 
         const sendGetRequest = async () => {
             try {

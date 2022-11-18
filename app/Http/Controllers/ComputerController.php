@@ -10,6 +10,23 @@ use Illuminate\Http\Request;
 
 class ComputerController extends Controller
 {
+
+    public function getComputerPlant($plant = "count") {
+        if($plant == "count") {
+            $krw = count(Computer::where('location', 'krw')->get());
+            $plg = count(Computer::where('location', 'plg')->get());
+            return response()->json(
+                [
+                    'krw' => $krw,
+                    'plg' => $plg,
+                ]);
+        } else if ($plant == "all") {
+            return response()->json([ "data" => Computer::get(['pc_name', 'processor', 'os', 'ram', 'hdd', 'ip', 'location'])]);
+        }
+        return response()->json([ "data" => Computer::where('location', $plant)->get(['pc_name', 'processor', 'os', 'ram', 'hdd', 'ip', 'location'])]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *

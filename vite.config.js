@@ -6,6 +6,7 @@ export default defineConfig({
     // server: {
     //     host: '0.0.0.0'
     // },
+
      plugins: [
         laravel([
             'resources/css/app.css',
@@ -13,6 +14,9 @@ export default defineConfig({
         ]),
         vue({
             template: {
+                compilerOptions: {
+                    // isCustomElement: (tag) => ['Column', 'DataTable'].includes(tag),
+                },
                 transformAssetUrls: {
                     // The Vue plugin will re-write asset URLs, when referenced
                     // in Single File Components, to point to the Laravel web

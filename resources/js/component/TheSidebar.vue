@@ -2,10 +2,10 @@
      <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
+    <router-link to="/" class="brand-link">
+        <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">AdminLTE 3</span>
+    </router-link>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -22,33 +22,17 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+                <router-link to="/" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                    Dashboard
+                    </p>
+                </router-link>
+            </li>
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa-solid fa-desktop nav-icon"></i>
-              <p>
-                Stock Opname
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <!-- <a href="pages/mailbox/mailbox.html" class="nav-link"> -->
-                <!-- </a> -->
-                <router-link to="/stock-opname/create" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Input Stock Opname</p>
-                </router-link>
-                <router-link to="/stock-opname" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>List Stock Opname</p>
-                </router-link>
-              </li>
-            </ul>
-          </li>
-
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa-solid fa-desktop nav-icon"></i>
@@ -62,16 +46,13 @@
                 <!-- <a href="pages/mailbox/mailbox.html" class="nav-link"> -->
                 <!-- </a> -->
                 <router-link to="/stock-opname/create" class="nav-link">
-                    <!-- <i class="far fa-laptop nav-icon"></i> -->
-                    <p>List Computer</p>
-                </router-link>
-                <!-- <router-link to="/stock-opname" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>List Stock Opname</p>
-                </router-link> -->
+                    <p>Input Computer - Stock Opname</p>
+                </router-link>
               </li>
             </ul>
           </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

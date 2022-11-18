@@ -122,6 +122,7 @@ class StockOpnameController extends Controller
         // dd($request->only(['section.name']));
 
 
+
         // DATA USER
         $user = collect($request->user)->except('sectionArray');
         // $user = $request->user;
@@ -156,8 +157,8 @@ class StockOpnameController extends Controller
             // DB::table('user_has_computers')->insert();
         });
 
-        $computer = UserHasComputers::latest()->take(5)->get()->toJson();
-        ComputerUserCreated::dispatch($computer);
+        // $computer = UserHasComputers::latest()->take(5)->get()->toJson();
+        // ComputerUserCreated::dispatch($computer);
 
 
         return response()->json([
@@ -165,5 +166,11 @@ class StockOpnameController extends Controller
             'message'   => 'Data entered successfully',
             'data'      => 'Data Success Input'
         ]);
+    }
+
+    public function getData() {
+        $computer = Computer::get()->groupBy('location');
+
+        // dd($computer['KRW']->count());
     }
 }

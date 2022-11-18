@@ -7,11 +7,11 @@
                         <div class="col-md-6 col-12">
                             <label for="pc_name">PC Name</label>
                             <input-text class="p-inputtext-sm w-100" :class="{'p-invalid': validation.pc_name.error}" placeholder="PC Name" v-model="computer.pc_name"></input-text>
-                            <small id="username2-help" class="p-error" v-if="validation.pc_name.error"> {{ validation.pc_name.message }} </small>
+                            <small id="username2-help" class="p-error" v-if="validation.pc_name.error"> {{ validation.pc_name.message2 }} </small>
                         </div>
                         <div class="col-md-6 col-12">
                             <label for="processor">Processor</label>
-                            <Dropdown optionValue="code" v-model="computer.processor" class="w-100" :class="{'p-invalid': validation.processor.error}" :options="processor" optionLabel="name" placeholder="Select a Processor" />
+                            <Dropdown optionValue="code" v-model="computer.processor" class="w-100" :class="{'p-invalid': validation.processor.error}" :filter="true" :options="processor" optionLabel="name" placeholder="Select a Processor" />
                             <small id="username2-help" class="p-error" v-if="validation.processor.error"> {{ validation.processor.message }} </small>
                             <!-- <small id="username2-help" class="p-error" v-if="errors.location[0]">{{ errors.location[1] }}</small> -->
                         </div>
@@ -36,7 +36,7 @@
                         <div class="col-md-6 col-12">
                             <label for="pc_name">IP</label>
                             <input-text :class="{'p-invalid': validation.ip.error}" v-model="computer.ip" class="p-inputtext-sm w-100" placeholder="IP"></input-text>
-                            <small id="username2-help" class="p-error" v-if="validation.ip.error"> {{ validation.ip.message }} </small>
+                            <small id="username2-help" class="p-error" v-if="validation.ip.error"> {{ validation.ip.message2 }} </small>
                             <!-- <small id="username2-help" class="p-error"></small> -->
                         </div>
                         <div class="col-md-6 col-12">

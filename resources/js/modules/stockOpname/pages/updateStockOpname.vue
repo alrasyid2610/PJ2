@@ -327,11 +327,11 @@ export default {
         // console.log(this.users);
 
 
-        Echo.channel('messeage')
-            .listen('ComputerUserCreated', (e) => {
-                this.data_computers = JSON.parse(e.message);
-                // console.log(this.data_computers[0]);
-            });
+        // Echo.channel('messeage')
+        //     .listen('ComputerUserCreated', (e) => {
+        //         this.data_computers = JSON.parse(e.message);
+        //         // console.log(this.data_computers[0]);
+        //     });
 
         const sendGetRequest = async () => {
             try {

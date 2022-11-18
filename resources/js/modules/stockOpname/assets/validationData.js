@@ -9,7 +9,8 @@ const validationData =
                 email: {
                     name: "email",
                     error: false,
-                    message: "Field Email can't be empty"
+                    message: "Field Email can't be empty",
+                    message2: "Field Email can't be empty",
                 },
                 section: {
                     name: "section",
@@ -24,7 +25,8 @@ const validationData =
                 pc_name: {
                     name: "pc_name",
                     error: false,
-                    message: "Field PC Name can't be empty"
+                    message: "Field PC Name can't be empty",
+                    message2: "Field PC Name can't be empty"
                 },
                 processor: {
                     name: "processor",
@@ -49,7 +51,8 @@ const validationData =
                 ip: {
                     name: "ip",
                     error: false,
-                    message: "Field ip can't be empty"
+                    message: "Field hdd can't be empty",
+                    message2: "Field hdd can't be empty"
                 },
                 ms_office: {
                     name: "ms_office",

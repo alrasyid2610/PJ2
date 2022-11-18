@@ -5,8 +5,21 @@
                 <h3 v-if="isUpdatePages">Ini halaman pages</h3>
                 <h3>Data User</h3>
                     <div class="row">
+                        <div class="col-12 col-12">
+                            <label for="name">Radius</label>
+                            <div class="field-checkbox">
+                                <Checkbox id="binary" v-model="isRadius" :binary="true" @change="change" />
+                                <label for="binary">Is Radius</label>
+                            </div>
+                            <!-- <div class="field-radiobutton">
+                                <RadioButton id="city2" name="city" value="Los Angeles" v-model="city" @change="change"></RadioButton>
+                                <label for="city2">Los Angeles</label>
+                            </div> -->
+                        </div>
+
+
                         <div class="col-md-6 col-12">
-                            <label for="name">Name</label>
+                            <label for="name">Nama</label>
                             <input-text class="p-inputtext-sm w-100" :class="{'p-invalid': errors.name[0] || validation.name.error}" placeholder="Name" v-model="d_users.name"></input-text>
                             <small id="username2-help" class="p-error" v-if="validation.name.error"> {{ validation.name.message }} </small>
                             <small id="username2-help" class="p-error" v-if="errors.name[0]">{{ errors.name[1] }}</small>
@@ -15,12 +28,12 @@
                             <label for="nik">Email <sub>Optional</sub> </label>
                             <input-text class="p-inputtext-sm w-100" placeholder="Email" v-model="d_users.email" :class="{'p-invalid': errors.email[0] || validation.email.error}"></input-text>
                             <small id="username2-help" class="p-error" v-if="validation.email.error"> {{ validation.email.message }} </small>
-                            <small id="username2-help" class="p-error" v-if="errors.email[0]">{{ errors.email[1] }}</small>
+                            <!-- <small id="username2-help" class="p-error" v-if="errors.email[0]">{{ errors.email[1] }}</small> -->
                         </div>
                         <div class="col-md-6 col-12">
                             <label for="section">Section</label>
                             <Dropdown v-if="isUpdatePages" class="w-100" :class="{'p-invalid': errors.section[0] || validation.section.error}" :options="sectionArray" optionLabel="name" optionValue="code" v-model="d_users.sectionArray.code" placeholder="Select a Section" />
-                            <Dropdown v-else class="w-100" :class="{'p-invalid': errors.section[0] || validation.section.error}" :options="sectionArray" optionLabel="name"  placeholder="Select a Section" v-model="d_users.sectionArray"/>
+                            <Dropdown v-else class="w-100" :class="{'p-invalid': errors.section[0] || validation.section.error}" :options="sectionArray" :filter="true" optionLabel="name"  placeholder="Select a Section" v-model="d_users.sectionArray"/>
                             <small id="username2-help" class="p-error" v-if="validation.section.error"> {{ validation.section.message }} </small>
                             <small id="username2-help" class="p-error" v-if="errors.section[0]">{{ errors.section[1] }}</small>
                         </div>
@@ -66,6 +79,13 @@ export default {
     emits: ['ubah'],
     data() {
         return {
+            isRadius: false,
+            categories: [
+                {name: 'Accounting', key: 'A'},
+                {name: 'Marketing', key: 'M'},
+                {name: 'Production', key: 'P'},
+                {name: 'Research', key: 'R'}
+            ],
             d_errors: this.errors,
             d_users: this.users,
             d_section: this.sectionArray,
@@ -98,6 +118,17 @@ export default {
     },
 
     methods: {
+        change() {
+            if (this.isRadius) {
+                console.log("radius")
+                console.log(this.users)
+                this.users.name = "Radius"
+                this.users.email = "radius@dnpi.co.id"
+            } else {
+                this.users.name = ""
+                this.users.email = ""
+            }
+        },
         isError(name) {
             const a = this.d_validation.filter((validationData) => {
                     validationData.name === name

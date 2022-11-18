@@ -18,6 +18,16 @@ import Dropdown from 'primevue/dropdown';
 import MultiSelect from 'primevue/multiselect';
 import InputSwitch from 'primevue/inputswitch';
 import Calendar from 'primevue/calendar';
+import RadioButton from 'primevue/radiobutton';
+import Checkbox from 'primevue/checkbox';
+import Dashboard from './pages/Dashboard.vue'
+
+
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import ColumnGroup from 'primevue/columngroup';     //optional for column grouping
+import Row from 'primevue/row';                     //optional for row
+import Tooltip from 'primevue/tooltip';                     //optional for row
 
 // ======== PRIMEVUE
 // import VueStepWizard from 'vue-step-wizard'
@@ -33,7 +43,11 @@ import 'primeflex/primeflex.css'
 
 
 const routes = [
-    ...routerStockOpname
+    {
+        path: '/',
+        component: Dashboard
+    },
+    ...routerStockOpname,
 ];
 
 const router = createRouter({
@@ -44,7 +58,7 @@ const router = createRouter({
 const app = createApp(App)
 
 app.use(router);
-app.use(PrimeVue);
+app.use(PrimeVue).directive('tooltip', Tooltip);
 app.use(ToastService);
 
 
@@ -56,4 +70,10 @@ app.component('Dropdown', Dropdown);
 app.component('MultiSelect', MultiSelect);
 app.component('InputSwitch', InputSwitch);
 app.component('Calendar', Calendar);
+app.component('RadioButton', RadioButton);
+app.component('Checkbox', Checkbox);
+app.component('DataTable', DataTable);
+app.component('Column', Column);
+app.component('ColumnGroup', ColumnGroup);
+app.component('Row', Row);
 app.mount(".wrapper");

@@ -99,11 +99,11 @@ export default {
     },
 
     created() {
-        Echo.channel('messeage')
-            .listen('ComputerUserCreated', (e) => {
-                this.data_computers = JSON.parse(e.message);
-                console.log(this.data_computers);
-            });
+        // Echo.channel('messeage')
+        //     .listen('ComputerUserCreated', (e) => {
+        //         this.data_computers = JSON.parse(e.message);
+        //         console.log(this.data_computers);
+        //     });
 
         const sendGetRequest = async () => {
             try {

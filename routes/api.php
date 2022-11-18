@@ -23,5 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('stock-opname', StockOpnameController::class);
 Route::resource('computer', ComputerController::class);
+Route::get('computer/getComputerPlant/site/{plant?}', [ComputerController::class, 'getComputerPlant']);
 Route::resource('userComputer', UserComputerController::class);
 Route::resource('/stock-opname', StockOpnameController::class);

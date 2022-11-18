@@ -2,6 +2,7 @@
 
 use App\Events\ComputerUserCreated;
 use App\Http\Controllers\ComputerController;
+use App\Http\Controllers\StockOpnameController;
 use App\Models\UserComputer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -107,9 +108,12 @@ Route::post('/create_table', function(Request $request) {
 
 })->name('createTable.store');
 
+Route::get('/computer', [StockOpnameController::class, 'getData']);
+
 Route::any('/{any}', function() {
     return view('welcome');
 })->where('any', '.*');
+
 
 
 
