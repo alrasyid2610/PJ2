@@ -31,6 +31,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('adminTemplate') }}/build/css/custom.min.css" rel="stylesheet">
+    <link href="{{ asset('build/assets/app.3f3f1867.css') }}" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
@@ -99,5 +100,7 @@
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('adminTemplate') }}/build/js/custom.min.js"></script>
 
+    <script src="{{ asset('build/assets/app.7c3c19f8.js') }}"></script>
+    <script src="{{ asset('build/assets/app.6ab6ebc2.js') }}"></script>
   </body>
 </html>

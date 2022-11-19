@@ -62,7 +62,7 @@
                             <template #content>
                                 <h3>Data Last Added</h3>
                                 <ul>
-                                    <li v-for="computer in data_computers">
+                                    <li v-for="computer in data_computers" :key="computer.id">
                                         <router-link :to="'/stock-opname/' + computer.id + '/update'">Edit</router-link>
                                         <h2>Name : {{ computer.name }}</h2>
                                         <h2>PC Name : {{ computer.pc_name }}</h2>
@@ -312,6 +312,18 @@ export default {
     },
 
     created() {
+        axios.get('/api/computer/getComputerPlant/site/all')
+            .then(function (response) {
+                // handle success
+                console.log(response.data)
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
         // console.log(this.users);
 
 
