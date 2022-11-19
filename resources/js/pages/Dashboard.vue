@@ -60,16 +60,17 @@
                                     placeholder="Select Columns" style="width: 20em"/>
                             </div>
                         </template>
-                        <!-- <Column field="pc_name" header="pc_name" style="min-width:12rem">
+                        <Column field="pc_name" header="pc_name" style="min-width:12rem">
                             <template #body="{data}">
                                 {{data.pc_name}}
                             </template>
                             <template #filter="{filterModel,filterCallback}">
                                 <InputText type="text" v-model="filterModel.value" @keydown.enter="filterCallback()" class="p-column-filter" :placeholder="`Search by name - `" v-tooltip.top.focus="'Hit enter key to filter'"/>
                             </template>
-                        </Column> -->
-                        <!-- <Column field="code" header="Code" /> -->
+                        </Column>
                         <Column v-for="(col, index) of selectedColumns" :field="col.field" :header="col.header" :key="col.field + '_' + index"></Column>
+                        <!-- <Column field="code" header="Code" /> -->
+
                         <!-- <Column v-for="col of columns" :field="col.field" :header="col.header" :key="col.field"></Column> -->
                         <!-- <Column field="pc_name" header="PC Name"></Column>
                         <Column field="processor" header="Processor"></Column>
@@ -78,6 +79,12 @@
                         <Column field="hdd" header="HDD"></Column>
                         <Column field="ip" header="IP"></Column>
                         <Column field="location" header="LOCATION"></Column> -->
+
+                        <Column header="Action" header-style="width: 4rem; text-align: center" body-style="text-align: center; overflow: visible">
+                            <template #body>
+                                <!-- <Button label="Edit" class="p-button-warning p-button-sm" @click="edit(computers.)" /> -->
+                            </template>
+                        </Column>
                     </DataTable>
                 </div>
             </div>
@@ -152,6 +159,9 @@ export default {
             });
     },
     methods: {
+        edit(pc_name) {
+            console.log("pc namenya adalah : ", pc_name)
+        },
         exportCSV() {
             console.log("safasfsaf");
             this.$refs.dt.exportCSV();
