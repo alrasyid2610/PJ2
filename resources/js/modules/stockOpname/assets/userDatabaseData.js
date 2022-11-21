@@ -9,9 +9,9 @@ const sectionArray = {
         {name: 'QA GR', code: '6'},
         {name: 'WH', code: '7'},
         {name: 'PPC', code: '8'},
-        {name: 'OFFSET', code: '9'},
-        {name: 'ADP-FP', code: '10'},
-        {name: 'ADP-RC', code: '11'},
+        {name: 'INVENTORY CONTROL', code: '9'},
+        {name: 'TEKNIK', code: '10'},
+        {name: 'PURCHASING', code: '11'},
     ],
 }
 
