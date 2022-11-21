@@ -226,7 +226,7 @@ export default {
 
             // console.log(that.users.location.name);
 
-            axios.put('http://127.0.0.1:8000/api/stock-opname/' + this.user_has_computer, {
+            axios.put('/api/stock-opname/' + this.user_has_computer, {
                 user: this.user,
                 computer: this.computer,
                 user_has_computer: this.user_has_computer
@@ -279,7 +279,7 @@ export default {
             // this.id = this.$route.params.id;
             // console.log(this.$route.params);
             var that = this;
-            axios.get('http://127.0.0.1:8000/api/stock-opname/' + this.id)
+            axios.get('/api/stock-opname/' + this.id)
             .then(function (response) {
                 var data = response.data;
                 // console.log(data);
@@ -335,7 +335,7 @@ export default {
 
         const sendGetRequest = async () => {
             try {
-                const resp = await axios.get('http://127.0.0.1:8000/api/computer');
+                const resp = await axios.get('/api/computer');
                 this.data_computers = resp.data;
             } catch (err) {
                 // Handle Error Here
@@ -353,7 +353,7 @@ export default {
         }, { immediate: true })
 
         // async function getData() {
-        //     const response = await axios.get('http://127.0.0.1:8000/api/computer')
+        //     const response = await axios.get('/api/computer')
         //         .then((response) => {
         //             console.log(response);
         //         })

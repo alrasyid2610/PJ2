@@ -224,7 +224,7 @@ export default {
 
             // console.log(that.users.location.name);
 
-            axios.post('http://127.0.0.1:8000/api/stock-opname/', {
+            axios.post('/api/stock-opname/', {
                 user: this.user,
                 computer: this.computer
             })
@@ -335,7 +335,7 @@ export default {
 
         const sendGetRequest = async () => {
             try {
-                const resp = await axios.get('http://127.0.0.1:8000/api/stock-opname');
+                const resp = await axios.get('/api/stock-opname');
                 this.data_computers = resp.data;
                 console.log(this.data_computers);
             } catch (err) {

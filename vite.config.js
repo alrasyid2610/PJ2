@@ -3,9 +3,10 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
-    // server: {
-    //     host: '0.0.0.0'
-    // },
+    server: {
+        // host: true,
+        // cors: false
+    },
 
      plugins: [
         laravel([
@@ -14,9 +15,6 @@ export default defineConfig({
         ]),
         vue({
             template: {
-                compilerOptions: {
-                    // isCustomElement: (tag) => ['Column', 'DataTable'].includes(tag),
-                },
                 transformAssetUrls: {
                     // The Vue plugin will re-write asset URLs, when referenced
                     // in Single File Components, to point to the Laravel web

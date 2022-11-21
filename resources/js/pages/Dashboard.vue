@@ -51,34 +51,46 @@
                         currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
                         paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
                         responsiveLayout="scroll"
-                        :globalFilterFields="['pc_name','processor','os','ram', 'hdd', 'ip']"
+                        :globalFilterFields="['pc_name','processor','os','ram', 'hdd', 'ip', 'location']"
+                        v-model:filters="filters"
+                        removableSort
                         >
+                        <template #empty>
+                            No computers found.
+                        </template>
                         <template #header>
                             <div style="text-align: left">
                                 <Button icon="pi pi-external-link" label="Export" @click="exportCSV($event)" />
-                                <MultiSelect class="mx-2" :modelValue="selectedColumns" :options="columns" optionLabel="header" @update:modelValue="onToggle"
-                                    placeholder="Select Columns" style="width: 20em"/>
+                                    <span class="p-input-icon-left mx-2">
+                                        <i class="pi pi-search" />
+                                        <InputText v-model="filters['global'].value" placeholder="Global Search" />
+                                    </span>
                             </div>
                         </template>
-                        <Column field="pc_name" header="pc_name" style="min-width:12rem">
+                        <!-- <Column field="pc_name" header="pc_name" style="min-width:12rem">
                             <template #body="{data}">
                                 {{data.pc_name}}
                             </template>
                             <template #filter="{filterModel,filterCallback}">
                                 <InputText type="text" v-model="filterModel.value" @keydown.enter="filterCallback()" class="p-column-filter" :placeholder="`Search by name - `" v-tooltip.top.focus="'Hit enter key to filter'"/>
                             </template>
-                        </Column>
-                        <Column v-for="(col, index) of selectedColumns" :field="col.field" :header="col.header" :key="col.field + '_' + index"></Column>
+                        </Column> -->
+                        <!-- <Column v-for="(col, index) of selectedColumns" :field="col.field" :header="col.header" :key="col.field + '_' + index"></Column> -->
                         <!-- <Column field="code" header="Code" /> -->
 
                         <!-- <Column v-for="col of columns" :field="col.field" :header="col.header" :key="col.field"></Column> -->
-                        <!-- <Column field="pc_name" header="PC Name"></Column>
-                        <Column field="processor" header="Processor"></Column>
-                        <Column field="os" header="OS"></Column>
-                        <Column field="ram" header="RAM"></Column>
-                        <Column field="hdd" header="HDD"></Column>
-                        <Column field="ip" header="IP"></Column>
-                        <Column field="location" header="LOCATION"></Column> -->
+
+                        <Column field="pc_name" header="PC Name" :sortable="true">
+                            <template #filter>
+                                <InputText type="text" v-model="filters['name']" class="p-column-filter" placeholder="Search by name"/>
+                            </template>
+                        </Column>
+                        <Column :sortable="true" field="processor" header="Processor"></Column>
+                        <Column :sortable="true" field="os" header="OS"></Column>
+                        <Column :sortable="true" field="ram" header="RAM"></Column>
+                        <Column :sortable="true" field="hdd" header="HDD"></Column>
+                        <Column :sortable="true" field="ip" header="IP"></Column>
+                        <Column :sortable="true" field="location" header="LOCATION"></Column>
 
                         <Column header="Action" header-style="width: 4rem; text-align: center" body-style="text-align: center; overflow: visible">
                             <template #body>
@@ -106,13 +118,15 @@ export default {
             computers: null,
             selectedColumns: null,
             columns: null,
-            filters2: {
+            filters: {
+                'global': {value: null, matchMode: FilterMatchMode.CONTAINS},
+                'location': {value: null, matchMode: FilterMatchMode.CONTAINS},
                 'pc_name': {value: null, matchMode: FilterMatchMode.CONTAINS},
                 'processor': {value: null, matchMode: FilterMatchMode.CONTAINS},
                 'os': {value: null, matchMode: FilterMatchMode.CONTAINS},
                 'ram': {value: null, matchMode: FilterMatchMode.IN},
                 'hdd': {value: null, matchMode: FilterMatchMode.EQUALS},
-                'ip': {value: null, matchMode: FilterMatchMode.EQUALS}
+                'ip': {value: null, matchMode: FilterMatchMode.EQUALS},
             },
         }
     },
@@ -133,16 +147,16 @@ export default {
             });
     },
     created() {
-        this.columns = [
-            {field: 'pc_name', header: 'PC NAME'},
-            {field: 'processor', header: 'Processor'},
-            {field: 'os', header: 'Os'},
-            {field: 'ram', header: 'RAM'},
-            {field: 'hdd', header: 'HDD'},
-            {field: 'ip', header: 'IP'},
-            {field: 'location', header: 'Location'}
-        ];
-        this.selectedColumns = this.columns;
+        // this.columns = [
+        //     {field: 'pc_name', header: 'PC NAME'},
+        //     {field: 'processor', header: 'Processor'},
+        //     {field: 'os', header: 'Os'},
+        //     {field: 'ram', header: 'RAM'},
+        //     {field: 'hdd', header: 'HDD'},
+        //     {field: 'ip', header: 'IP'},
+        //     {field: 'location', header: 'Location'}
+        // ];
+        // this.selectedColumns = this.columns;
         let that = this
         axios.get('/api/computer/getComputerPlant/site')
             .then(function (response) {
