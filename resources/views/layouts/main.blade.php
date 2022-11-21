@@ -27,11 +27,11 @@
     <link href="{{ asset('adminTemplate') }}/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     {{-- Datatable --}}
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css"> --}}
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('adminTemplate') }}/build/css/custom.min.css" rel="stylesheet">
-    <link href="{{ asset('build/assets/app.dc0886e7.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/assets/app.ab7eab25.css') }}" rel="stylesheet">
 
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <script ></script>
@@ -102,6 +102,6 @@
     <script src="{{ asset('adminTemplate') }}/build/js/custom.min.js"></script>
 
     <script src="{{ asset('build/assets/app.7c3c19f8.js') }}"></script>
-    <script src="{{ asset('build/assets/app.67700a93.js') }}"></script>
+    <script src="{{ asset('build/assets/app.3b59db41.js') }}"></script>
   </body>
 </html>
