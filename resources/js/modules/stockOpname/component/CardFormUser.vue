@@ -25,7 +25,8 @@
                             <small id="username2-help" class="p-error" v-if="errors.name[0]">{{ errors.name[1] }}</small>
                         </div>
                         <div class="col-md-6 col-12">
-                            <label for="nik">Email <sub>Optional</sub> </label>
+                            <label for="nik">Email</label>
+                            (Klik Jika email ingin kosong <Checkbox id="binary" v-model="isKosong" :binary="true" @change="emailKosong()" /> )
                             <input-text class="p-inputtext-sm w-100" placeholder="Email" v-model="d_users.email" :class="{'p-invalid': errors.email[0] || validation.email.error}"></input-text>
                             <small id="username2-help" class="p-error" v-if="validation.email.error"> {{ validation.email.message }} </small>
                             <!-- <small id="username2-help" class="p-error" v-if="errors.email[0]">{{ errors.email[1] }}</small> -->
@@ -80,6 +81,7 @@ export default {
     data() {
         return {
             isRadius: false,
+            isKosong: false,
             categories: [
                 {name: 'Accounting', key: 'A'},
                 {name: 'Marketing', key: 'M'},
@@ -118,10 +120,15 @@ export default {
     },
 
     methods: {
+        emailKosong() {
+            if(this.isKosong) {
+                this.users.email = "kosong@dnpi.co.id"
+            } else {
+                this.users.email = ""
+            }
+        },
         change() {
             if (this.isRadius) {
-                console.log("radius")
-                console.log(this.users)
                 this.users.name = "Radius"
                 this.users.email = "radius@dnpi.co.id"
             } else {

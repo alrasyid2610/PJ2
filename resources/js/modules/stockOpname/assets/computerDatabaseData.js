@@ -34,6 +34,10 @@ const os = {
     os: [
         {name:'Windows 10 Pro 64bit', code:'Windows 10 Pro 64bit'},
         {name:'Windows 10 Pro 32bit', code:'Windows 10 Pro 32bit'},
+        {name:'Windows 7 64bit', code:'Windows 7 64bit'},
+        {name:'Windows 7 32bit', code:'Windows 7 32bit'},
+        {name:'Windows XP 64bit', code:'Windows XP 64bit'},
+        {name:'Windows XP 32bit', code:'Windows XP 32bit'},
     ],
 }
 

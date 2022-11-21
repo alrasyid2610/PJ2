@@ -85,7 +85,11 @@
                                 <InputText type="text" v-model="filters['name']" class="p-column-filter" placeholder="Search by name"/>
                             </template>
                         </Column>
-                        <Column :sortable="true" field="processor" header="Processor"></Column>
+                        <Column :sortable="true" field="processor" header="Processor">
+                            <template #body="{data}">
+                                {{ decodeHtml(data.processor) }}
+                            </template>
+                        </Column>
                         <Column :sortable="true" field="os" header="OS"></Column>
                         <Column :sortable="true" field="ram" header="RAM"></Column>
                         <Column :sortable="true" field="hdd" header="HDD"></Column>
@@ -173,6 +177,11 @@ export default {
             });
     },
     methods: {
+        decodeHtml(html) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        },
         edit(pc_name) {
             console.log("pc namenya adalah : ", pc_name)
         },
