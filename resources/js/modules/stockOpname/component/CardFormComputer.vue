@@ -62,6 +62,7 @@
                         </div>
                         <div class="col-md-4 col-lg-6 col-12">
                             <label for="pc_name">User Login</label>
+                            (Klik Jika ingin asal <Checkbox id="binary" v-model="isAsal" :binary="true" @change="isiAsal()" /> )
                             <input-text :class="{'p-invalid': validation.user_login.error}" v-model="computer.user_login" class="p-inputtext-sm w-100" placeholder="User Login" name="user_login"></input-text>
                             <small id="username2-help" class="p-error" v-if="validation.user_login.error"> {{ validation.user_login.message }} </small>
                             <!-- <small id="username2-help" class="p-error"></small> -->
@@ -112,7 +113,7 @@
                         <div class="col-md-4 col-12"  v-if="a">
                             <!-- <label for="os">Fix Asset Date</label> -->
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
+                                <label for="exampleInputEmail1">Tanggal FA</label>
                                 <input type="date" :class="{'is-invalid': validation.date_fa.error}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" v-model="computer.date_fa">
                                 <small id="username2-help" class="p-error" v-if="validation.date_fa.error"> {{ validation.date_fa.message }} </small>
                                 <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
@@ -160,6 +161,7 @@ export default {
     inject: ['computer', 'validation'],
     data() {
         return {
+            isAsal: false,
             a: false,
             processorSelected: null,
             osSelected: null,
@@ -193,6 +195,13 @@ export default {
     },
 
     methods: {
+        isiAsal() {
+            if(this.isAsal) {
+                this.computer.user_login = "Asal"
+            } else {
+                this.computer.user_login = ""
+            }
+        },
         test() {
             this.a = this.computer.status_fix_asset;
         }

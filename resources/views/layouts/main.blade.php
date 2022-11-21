@@ -102,6 +102,6 @@
     <script src="{{ asset('adminTemplate') }}/build/js/custom.min.js"></script>
 
     <script src="{{ asset('build/assets/app.7c3c19f8.js') }}"></script>
-    <script src="{{ asset('build/assets/app.67700a93.js') }}"></script>
+    <script src="{{ asset('build/assets/app.95192cec.js') }}"></script>
   </body>
 </html>
