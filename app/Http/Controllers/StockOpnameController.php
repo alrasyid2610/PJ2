@@ -118,7 +118,7 @@ class StockOpnameController extends Controller
 
     public function store(StoreInputStockOpnameRequest $request)
     {
-        // return response()->json($request->computer);
+        // return response()->json($request->computer['keterangan']);
         // dd($request->only(['section.name']));
 
 

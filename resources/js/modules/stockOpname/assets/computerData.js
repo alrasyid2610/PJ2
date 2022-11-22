@@ -19,6 +19,7 @@ const computerData =
                 date_fa: '',
                 no_fa: '',
                 edp_no_fa: '',
+                keterangan: ''
         }
     }
 export {computerData}

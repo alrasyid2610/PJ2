@@ -27,15 +27,52 @@
                             <small id="username2-help" class="p-error" v-if="validation.ram.error"> {{ validation.ram.message }} </small>
                             <!-- <small id="username2-help" class="p-error"></small> -->
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-4 col-12">
                             <label for="pc_name">Hdd</label>
                             <input-text :class="{'p-invalid': validation.hdd.error}" v-model="computer.hdd" class="p-inputtext-sm w-100" placeholder="HDD"></input-text>
                             <small id="username2-help" class="p-error" v-if="validation.hdd.error"> {{ validation.hdd.message }} </small>
                             <!-- <small id="username2-help" class="p-error"></small> -->
                         </div>
-                        <div class="col-md-6 col-12">
-                            <label for="pc_name">IP</label>
-                            <input-text :class="{'p-invalid': validation.ip.error}" v-model="computer.ip" class="p-inputtext-sm w-100" placeholder="IP"></input-text>
+                        <div class="col-md-8 col-12">
+                            <label for="pc_name">
+                                IP :
+                                <span>
+                                    <RadioButton name="city" value="172.16.128." v-model="segmentIP" @change="ipSelected" />
+                                    128
+                                </span>
+                                &nbsp;
+                                &nbsp;
+                                <span>
+                                    <RadioButton name="city" value="172.16.129." v-model="segmentIP" @change="ipSelected" />
+                                    129
+                                </span>
+                                &nbsp;
+                                &nbsp;
+                                <span>
+                                    <RadioButton name="city" value="172.16.130." v-model="segmentIP" @change="ipSelected" />
+                                    130
+                                </span>
+                                &nbsp;
+                                &nbsp;
+                                <span>
+                                    <RadioButton name="city" value="172.16.131." v-model="segmentIP" @change="ipSelected" />
+                                    131
+                                </span>
+                                &nbsp;
+                                &nbsp;
+                                <span>
+                                    <RadioButton name="city" value="172.17.128." v-model="segmentIP" @change="ipSelected" />
+                                    KRW
+                                </span>
+                                &nbsp;
+                                &nbsp;
+                                <span>
+                                    <RadioButton name="city" value="" v-model="segmentIP" @change="ipSelected" />
+                                    Custom
+                                </span>
+                            </label>
+
+                            <input-text :class="{'p-invalid': validation.ip.error}" v-model="computer.ip" class="p-inputtext-sm w-100" placeholder="IP" id="kocak"></input-text>
                             <small id="username2-help" class="p-error" v-if="validation.ip.error"> {{ validation.ip.message2 }} </small>
                             <!-- <small id="username2-help" class="p-error"></small> -->
                         </div>
@@ -79,25 +116,17 @@
                             <small id="username2-help" class="p-error" v-if="validation.usage_type.error"> {{ validation.usage_type.message }} </small>
                             <!-- <small id="username2-help" class="p-error" v-if="errors.location[0]">{{ errors.location[1] }}</small> -->
                         </div>
-                        <!-- <div class="col-md-6 col-12">
-                            <label for="os">Location</label>
-                            <Dropdown v-model="computer.location" class="w-100" :options="location" optionLabel="name" placeholder="Select a Location Factory" />
-                        </div> -->
 
-                        <!-- <div class="col-md-6 col-12">
-                            <label for="nik">Email</label>
-                            <input-text class="p-inputtext-sm w-100" placeholder="Email" v-model="d_users.email" :class="{'p-invalid': errors.email[0]}"></input-text>
-                            <small id="username2-help" class="p-error" v-if="errors.email[0]">{{ errors.email[1] }}</small>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <label for="section">Section</label>
-                            <Dropdown class="w-100" :class="{'p-invalid': errors.section[0]}" :options="section" optionLabel="name" placeholder="Select a Section" v-model="d_users.section"/>
-                            <small id="username2-help" class="p-error" v-if="errors.section[0]">{{ errors.section[1] }}</small>
+                        <div class="col-md-12 col-12">
+                            <label for="os">Keterangan</label>
+                            <div class="form-group">
+                              <label for=""></label>
+                              <textarea class="form-control" name="keterangan" id="" rows="3" placeholder="Keterangan" v-model="computer.keterangan" ref="input2"></textarea>
+                            </div>
+                            <div>{{ computer.keterangan }}</div>
+                            <!-- <small id="username2-help" class="p-error" v-if="errors.location[0]">{{ errors.location[1] }}</small> -->
                         </div>
 
-                        <div class="col-12">
-                            <Button label="Submit" class="p-button-sm" type="submit"/>
-                        </div> -->
                     </div>
 
                     <h4 class="mt-4">Fix Asset</h4>
@@ -161,6 +190,7 @@ export default {
     inject: ['computer', 'validation'],
     data() {
         return {
+            segmentIP: null,
             isAsal: false,
             a: false,
             processorSelected: null,
@@ -195,6 +225,11 @@ export default {
     },
 
     methods: {
+        ipSelected() {
+            this.computer.ip = this.segmentIP
+            var a = document.getElementById("kocak")
+            a.focus()
+        },
         isiAsal() {
             if(this.isAsal) {
                 this.computer.user_login = "Asal"

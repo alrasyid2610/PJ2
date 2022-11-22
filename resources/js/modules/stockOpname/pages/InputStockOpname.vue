@@ -138,6 +138,7 @@ export default {
             return re.test(email);
         },
         checkForm(users,validationData) {
+            console.log(this.computer)
             // console.log(this.computer.status_fix_asset)
             validationData.name.error = users.name === '' ? true : false
             validationData.section.error = users.sectionArray.name === '' ? true : false
@@ -220,7 +221,7 @@ export default {
             // console.log(this.users.factory.name);
             var that = this;
 
-            console.log("submit");
+            console.log(this.computer);
 
             // console.log(that.users.location.name);
 
@@ -298,6 +299,7 @@ export default {
                         date_fa: '',
                         no_fa: '',
                         edp_no_fa: '',
+                        keterangan: ''
                     }
 
                     that.$toast.add({severity:'success', summary: 'Success', detail: message, life: 3000});
