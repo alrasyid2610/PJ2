@@ -3,6 +3,7 @@
 use App\Events\ComputerUserCreated;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\StockOpnameController;
+use App\Http\Controllers\TestMailController;
 use App\Models\UserComputer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 //     return "Hello Harun Al Rasyid";
 // });
 
+
+Route::get('/testmail', [TestMailController::class, 'index']);
 
 Route::get('/event', function() {
     $user = UserComputer::get()->toJson();

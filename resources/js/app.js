@@ -3,6 +3,7 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import App from "./app.vue";
 import {routerStockOpname} from "./modules/stockOpname/router.js";
+import {routerLicense} from "./modules/license/router";
 import { Axios } from 'axios';
 
 
@@ -48,6 +49,7 @@ const routes = [
         component: Dashboard
     },
     ...routerStockOpname,
+    ...routerLicense
 ];
 
 const router = createRouter({

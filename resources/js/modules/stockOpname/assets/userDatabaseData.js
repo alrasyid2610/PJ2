@@ -15,7 +15,7 @@ const sectionArray = {
         {name: 'INVENTORY CONTROL', code: '9'},
         {name: 'TEKNIK', code: '10'},
         {name: 'PURCHASING', code: '11'},
-        {name: 'PPC', code: '15'},
+        {name: 'PREPRESS', code: '15'},
         {name: 'DATA CENTER', code: '16'},
         {name: 'ACC', code: '17'},
         {name: 'FINANCE', code: '18'},

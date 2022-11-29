@@ -31,7 +31,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('adminTemplate') }}/build/css/custom.min.css" rel="stylesheet">
-    <link href="{{ asset('/build/assets/app.dc0886e7.css') }}" rel="stylesheet">
+    <link href="{{ asset('/build/assets/app.caeb4af9.css') }}" rel="stylesheet">
 
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <script ></script>
@@ -57,7 +57,7 @@
 
     <!-- jQuery -->
     <script src="{{ asset('adminTemplate') }}/vendors/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js" defer></script>
+    {{-- <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js" defer></script> --}}
     <script src="public\adminTemplate\vendors\datatables.net\js\jquery.dataTables.js"></script>
     <!-- Bootstrap -->
     <script src="{{ asset('adminTemplate') }}/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -102,6 +102,6 @@
     <script src="{{ asset('adminTemplate') }}/build/js/custom.min.js"></script>
 
     <script src="{{ asset('/build/assets/app.7c3c19f8.js') }}"></script>
-    <script src="{{ asset('/build/assets/app.aae63c37.js') }}"></script>
+    <script src="{{ asset('/build/assets/app.59e264a1.js') }}"></script>
   </body>
 </html>

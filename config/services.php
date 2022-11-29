@@ -20,6 +20,11 @@ return [
         'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
         'scheme' => 'https',
     ],
+    'twilio' => [
+        'sid' => 'ACe0b3644eb3bf778a87e8d15bc7b5e70d',
+        'token' => '661a109ca01252dfdaf74400e47d043d',
+        'whatsapp_from' => '+16402213099'
+    ],
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
