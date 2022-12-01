@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComputerController;
+use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\StockOpnameController;
 use App\Http\Controllers\UserComputerController;
 
@@ -26,3 +27,6 @@ Route::resource('computer', ComputerController::class);
 Route::get('computer/getComputerPlant/site/{plant?}', [ComputerController::class, 'getComputerPlant']);
 Route::resource('userComputer', UserComputerController::class);
 Route::resource('/stock-opname', StockOpnameController::class);
+Route::resource('/li', StockOpnameController::class);
+Route::resource('/license', LicenseController::class);
+// Route::apiResources()
