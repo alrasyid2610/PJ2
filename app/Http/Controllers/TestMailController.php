@@ -11,9 +11,13 @@ class TestMailController extends Controller
 {
     //
 
-    public function index()
+    public function kocak() {
+        return "kocak bgt anjir";
+    }
+
+    public function index($message)
     {
-        $this->whatsappNotification('+6289602999975');
+        $this->whatsappNotification('+6289602999975', $message);
         // $mailData = [
         //     'title' => "Peringatan License Fortigate akan EXPIRED 10 hari lagi",
         //     'body' => "test pengiriman email dari laravel"
@@ -23,18 +27,17 @@ class TestMailController extends Controller
         //     'harun_rasyid@dnpi.co.id',
         //     'chevy@dnpi.co.id',
         // ])->send(new DemoMail($mailData));
-
-        dd("email sukses terkirim");
     }
 
-    private function whatsappNotification(string $recipient)
+    private function whatsappNotification(string $recipient, $message)
     {
         $sid    = getenv("TWILIO_AUTH_SID");
         $token  = getenv("TWILIO_AUTH_TOKEN");
-        $wa_from= "+14155238886";
+        $wa_from= getenv("TWILIO_WHATSAPP_FROM");
+        // $wa_from= getenv()"+14155238886";
         $twilio = new Client($sid, $token);
 
-        $body ="License Veam mau expired tagnggal 12 Desember 2022";
+        $body = $message;
 
         return $twilio->messages->create("whatsapp:$recipient",["from" => "whatsapp:$wa_from", "body" => $body]);
     }

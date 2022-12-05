@@ -2,6 +2,7 @@
 
 use App\Events\ComputerUserCreated;
 use App\Http\Controllers\ComputerController;
+use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\StockOpnameController;
 use App\Http\Controllers\TestMailController;
 use App\Models\UserComputer;
@@ -26,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/kocak', function() {
 //     return "Hello Harun Al Rasyid";
 // });
+
+// Route::get('/license', [LicenseController::class, 'index']);
 
 
 Route::get('/testmail', [TestMailController::class, 'index']);

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('plugins') }}/jquery-smartwizard-master/dist/css/smart_wizard_all.css">
     {{-- smart wizrd form --}}
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="{{ asset('plugins/aos/aos.css') }}">
 
   <!-- JQVMap -->
   <link rel="stylesheet" href="{{ asset('plugins') }}/jqvmap/jqvmap.min.css">
@@ -45,7 +45,7 @@
 
 <!-- jQuery -->
 <script src="{{ asset('plugins') }}/jquery/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js" defer></script>
+{{-- <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js" defer></script> --}}
 
 <!-- jQuery UI 1.11.4 -->
 <script src="{{ asset('plugins') }}/jquery-ui/jquery-ui.min.js"></script>
@@ -53,6 +53,8 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+
+
 <!-- Bootstrap 4 -->
 <script src="{{ asset('plugins') }}/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
@@ -64,6 +66,8 @@
 <script src="{{ asset('plugins') }}/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="{{ asset('plugins') }}/jquery-knob/jquery.knob.min.js"></script>
+
+<script src="{{ asset('plugins/aos/aos.js') }}"></script>
 
 {{-- Smart Wizard Form --}}
 <script src="{{ asset('plugins') }}/jquery-smartwizard-master/dist/js/jquery.smartWizard.js"></script>
@@ -82,6 +86,7 @@
 <script src="{{ asset('dist') }}/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist') }}/js/pages/dashboard.js"></script>
+
 
 {{-- <script src="{{ asset('build/assets/app.2153a1eb.js') }}"></script> --}}
 </body>

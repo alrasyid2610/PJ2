@@ -29,6 +29,8 @@
     {{-- Datatable --}}
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css"> --}}
 
+    <script src="{{ asset("/plugins/aos/aos.css") }}"></script>
+
     <!-- Custom Theme Style -->
     <link href="{{ asset('adminTemplate') }}/build/css/custom.min.css" rel="stylesheet">
     <link href="{{ asset('/build/assets/app.caeb4af9.css') }}" rel="stylesheet">
@@ -94,6 +96,8 @@
     <!-- bootstrap-daterangepicker -->
     <script src="{{ asset('adminTemplate') }}/vendors/moment/min/moment.min.js"></script>
     <script src="{{ asset('adminTemplate') }}/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script src="{{ asset("/plugins/aos/aos.js") }}"></script>
 
     {{-- Datatable --}}
 

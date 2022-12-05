@@ -7,6 +7,25 @@ use Illuminate\Http\Request;
 
 class LicenseController extends Controller
 {
+
+    protected function check_expired($expired_date, $count_day_to_expired, $mail, $license_name) {
+        // return "anjing";
+        // $date_expired=date_create("2022-12-28");
+        $diff=date_diff(date_create($expired_date),date_create(date_create()->format("Y-m-d")))->format("%R%a");
+        $result = [
+            "expired" => (int)$diff >= ((int)("-" . $count_day_to_expired)),
+            "sisa_hari" => (int)$diff,
+            "pengecekan_expired" => $count_day_to_expired
+        ];
+
+
+        if($result['expired'] == true) {
+            $pesan = "License $license_name akan expired " . $result['sisa_hari'] . " hari lagi. Segera lakukan perpanjangan";
+            // $mail->index($pesan);
+        }
+
+        return $result;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +33,18 @@ class LicenseController extends Controller
      */
     public function index()
     {
-        //
+        // $mail = new TestMailController;
+
+        $data = License::get();
+        // $data_expired2 = collect([]);
+        $index = 0;
+        $data_expired = $data->map(function ($item, $key) {
+            $mail = new TestMailController;
+            return collect($item)->merge($this->check_expired($item->expired_date, $item->check_expired, $mail, $item->license_name));
+        });
+
+        return $data_expired;
+
     }
 
     /**

@@ -82,7 +82,6 @@ export default {
                 {name: '1 Tahun', code: {code: 'Y', value: 1}},
                 {name: '6 Bulan', code: {code: 'M', value: 6}},
                 {name: '3 Bulan', code: {code: 'M', value: 3}},
-
             ]
         }
     },
