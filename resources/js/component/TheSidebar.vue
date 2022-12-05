@@ -67,6 +67,10 @@
                 <!-- </a> -->
                 <router-link to="/license/create" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
+                    <p>Add License</p>
+                </router-link>
+                <router-link to="/license" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
                     <p>List License</p>
                 </router-link>
               </li>
