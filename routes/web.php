@@ -28,8 +28,8 @@ use Illuminate\Support\Facades\Route;
 //     return "Hello Harun Al Rasyid";
 // });
 
-Hello ini update data
 
+//Hello ini update data
 // Route::get('/license', [LicenseController::class, 'index']);
 
 
