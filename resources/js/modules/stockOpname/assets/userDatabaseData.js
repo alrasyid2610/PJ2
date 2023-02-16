@@ -20,6 +20,7 @@ const sectionArray = {
         {name: 'ACC', code: '17'},
         {name: 'FINANCE', code: '18'},
         {name: 'CC', code: '19'},
+        {name: 'SALES', code: '20'},
     ],
 }
 
