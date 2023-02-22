@@ -93,6 +93,15 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        'radius' => [
+            'driver' => 'odbc',
+            'dsn' => 'VisionLive',
+            'database' => 'vision',
+            'host' => '172.16.128.109',
+            'username' => 'vision',
+            'password' => 'vision'
+        ],
+
     ],
 
     /*

@@ -4,9 +4,8 @@
         <div class="container-fluid">
 
             <!-- Main row -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-3 col-6">
-                    <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3>{{ count_pc_krw }}</h3>
@@ -22,7 +21,6 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
-                    <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
                             <h3>{{ count_pc_plg }}</h3>
@@ -37,21 +35,22 @@
                         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="row">
                 <div class="col-12">
+                    <!-- <Dropdown v-model="selectedPlant" :options="plants" optionLabel="name" placeholder="Select a Plant" v-on:change="testchange"/> -->
                     <DataTable
                         :value="computers"
                         ref="dt"
                         stripedRows
                         :paginator="true"
-                        :rows="5"
+                        :rows="8"
                         :rowsPerPageOptions="[5,10,25,50]"
                         currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
                         paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
                         responsiveLayout="scroll"
-                        :globalFilterFields="['pc_name','processor','os','ram', 'hdd', 'ip', 'location']"
+                        :globalFilterFields="['name','pc_name','processor','os','ram', 'hdd', 'ip', 'location']"
                         v-model:filters="filters"
                         removableSort
                         >
@@ -79,7 +78,7 @@
                         <!-- <Column field="code" header="Code" /> -->
 
                         <!-- <Column v-for="col of columns" :field="col.field" :header="col.header" :key="col.field"></Column> -->
-
+                        <Column :sortable="true" field="name" header="NAME"></Column>
                         <Column field="pc_name" header="PC Name" :sortable="true">
                             <template #filter>
                                 <InputText type="text" v-model="filters['name']" class="p-column-filter" placeholder="Search by name"/>
@@ -117,6 +116,12 @@ import {FilterMatchMode,FilterOperator} from 'primevue/api';
 export default {
     data() {
         return {
+            selectedPlant : {name: 'ALL', code:'ALL'},
+            plants: [
+                {name: 'ALL', code: 'ALL'},
+                {name: 'PLG', code: 'PLG'},
+                {name: 'KRW', code: 'KRW'},
+            ],
             count_pc_plg : 0,
             count_pc_krw : 0,
             computers: null,
@@ -132,11 +137,39 @@ export default {
                 'hdd': {value: null, matchMode: FilterMatchMode.EQUALS},
                 'ip': {value: null, matchMode: FilterMatchMode.EQUALS},
             },
+            test: [
+                    {
+                        "id": 1,
+                        "pc_name": "nine",
+                        "processor": "Intel &reg; Core&trade; i3-6100 Processor",
+                        "os": "Windows 10 Pro 64bit",
+                        "ram": "8",
+                        "hdd": "500",
+                        "ip": "172.16.129.240",
+                        "ms_office": "Microsoft Office 2007",
+                        "antivirus": "Trend Micro|Morpisec",
+                        "wsus": "1",
+                        "user_login": "harun_rasyid",
+                        "brand": "Rakitan",
+                        "usage_type": "Alone",
+                        "location": "KRW",
+                        "date_fa": null,
+                        "no_fa": null,
+                        "edp_no_fa": null,
+                        "keterangan": null,
+                        "created_at": "2022-11-11 05:57:04",
+                        "updated_at": "2022-11-11 06:03:00",
+                        "id_user": 1,
+                        "id_computer": 1,
+                        "name": "Harun Al Rasyid",
+                        "section": "EDP"
+                    }
+                ]
         }
     },
     mounted() {
         let that = this
-        axios.get('/api/computer/getComputerPlant/site/all')
+        axios.get('/api/computer/getComputerPlant/site/ALL')
             .then(function (response) {
                 console.log(response.data.data)
                 that.computers = response.data.data
@@ -182,6 +215,24 @@ export default {
             txt.innerHTML = html;
             return txt.value;
         },
+        testchange(el) {
+            let val = el.value.name
+            // this.computers = this.test
+            let that = this
+            axios.get('/api/computer/getComputerPlant/site/' + val)
+            .then(function (response) {
+                console.log(response.data.data)
+                console.log(that.computers)
+                that.computers = response.data.data
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
+        },
         edit(pc_name) {
             console.log("pc namenya adalah : ", pc_name)
         },
@@ -189,7 +240,7 @@ export default {
             console.log("safasfsaf");
             this.$refs.dt.exportCSV();
         },
-         onToggle(value) {
+        onToggle(value) {
             this.selectedColumns = this.columns.filter(col => value.includes(col));
         }
     }

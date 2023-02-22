@@ -7,7 +7,7 @@ use App\Http\Requests\ComputerUpdateRequest;
 use App\Models\Computer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ComputerController extends Controller
 {
 
@@ -20,8 +20,27 @@ class ComputerController extends Controller
                     'krw' => $krw,
                     'plg' => $plg,
                 ]);
-        } else if ($plant == "all") {
-            return response()->json([ "data" => Computer::get(['pc_name', 'processor', 'os', 'ram', 'hdd', 'ip', 'location'])]);
+        } else if ($plant == "ALL") {
+            return response()->json([ "data" => DB::table('computers')
+            ->join('user_has_computers','computers.id', '=', 'user_has_computers.id_computer')
+            ->select('computers.*', 'user_has_computers.*')
+            ->get()]);
+        } else if ($plant == "PLG") {
+            return response()->json([ "data" => DB::table('computers')
+            ->join('user_has_computers','computers.id', '=', 'user_has_computers.id_computer')
+            ->select('computers.*', 'user_has_computers.*')
+            ->where('user_has_computers.location', '=', 'PLG')
+            ->get()
+            ]);
+            // return response()->json([ "data" => Computer::where('location', 'PLG')->get(['pc_name', 'processor', 'os', 'ram', 'hdd', 'ip', 'location'])]);
+        } else if ($plant == "KRW") {
+            return response()->json([ "data" => DB::table('computers')
+            ->join('user_has_computers','computers.id', '=', 'user_has_computers.id_computer')
+            ->select('computers.*', 'user_has_computers.*')
+            ->where('user_has_computers.location', '=', 'KRW')
+            ->get()
+            ]);
+            // return response()->json([ "data" => Computer::get(['pc_name', 'processor', 'os', 'ram', 'hdd', 'ip', 'location'])->where('location', 'KRW')]);
         }
         return response()->json([ "data" => Computer::where('location', $plant)->get(['pc_name', 'processor', 'os', 'ram', 'hdd', 'ip', 'location'])]);
     }

@@ -35,7 +35,7 @@
     <link href="{{ asset('adminTemplate') }}/build/css/custom.min.css" rel="stylesheet">
     <link href="{{ asset('/build/assets/app.caeb4af9.css') }}" rel="stylesheet">
 
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script ></script>
   </head>
 
@@ -55,7 +55,7 @@
       </div>
     </div>
 
-     {{-- @vite('/resources/js/app.js') --}}
+     @vite('/resources/js/app.js')
 
     <!-- jQuery -->
     <script src="{{ asset('adminTemplate') }}/vendors/jquery/dist/jquery.min.js"></script>

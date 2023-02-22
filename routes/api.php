@@ -6,6 +6,7 @@ use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\StockOpnameController;
 use App\Http\Controllers\UserComputerController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,14 @@ use App\Http\Controllers\UserComputerController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::get('/test', function() {
+    return response()->json(
+        DB::table('computers')
+            ->join('user_has_computers','computers.id', '=', 'user_has_computers.id_computer')
+            ->select('computers.*', 'user_has_computers.*')
+            ->get()
+    );
+});
 Route::resource('stock-opname', StockOpnameController::class);
 Route::resource('computer', ComputerController::class);
 Route::get('computer/getComputerPlant/site/{plant?}', [ComputerController::class, 'getComputerPlant']);

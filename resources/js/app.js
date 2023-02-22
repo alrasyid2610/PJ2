@@ -22,19 +22,11 @@ import Calendar from 'primevue/calendar';
 import RadioButton from 'primevue/radiobutton';
 import Checkbox from 'primevue/checkbox';
 import Dashboard from './pages/Dashboard.vue'
-
-
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';     //optional for column grouping
 import Row from 'primevue/row';                     //optional for row
 import Tooltip from 'primevue/tooltip';                     //optional for row
-
-// ======== PRIMEVUE
-// import VueStepWizard from 'vue-step-wizard'
-// import 'vue-step-wizard/dist/vue-step-wizard.css'
-
-
 // import 'primevue/resources/themes/saga-blue/theme.css'       //theme
 import 'primevue/resources/themes/lara-light-teal/theme.css'
 import 'primevue/resources/primevue.min.css'                 //core css
