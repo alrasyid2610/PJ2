@@ -93,6 +93,21 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        'PMPG' => [
+            'driver' => 'sqlsrv',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DBPMPG_HOST', '172.16.128.113'),
+            'port' => env('DBPMPG_PORT', '1433'),
+            'database' => env('DBPMPG_DATABASE', 'PlantManager'),
+            'username' => env('DBPMPG_USERNAME', 'efipm'),
+            'password' => env('DBPMPG_PASSWORD', 'Bdkk@2007'),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
+            'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'true'),
+        ],
+
         'radius' => [
             'driver' => 'odbc',
             'dsn' => 'VisionLive',

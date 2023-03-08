@@ -27,9 +27,27 @@ use Illuminate\Support\Facades\Route;
 // Route::get('', function () {
 //     return view('welcome');
 // });
-// Route::get('/kocak', function() {
-//     return "Hello Harun Al Rasyid";
-// });
+Route::get('/kocak', function() {
+    // $a = DB::connection('PMPG')->table('materialItem')->take(100)->get();
+    $inquepg = DB::connection('PMPG')->select("select count(StatusCode) as 'IN' from ConnectorInQueue
+where MessageDateTime between CONVERT(date, GETDATE() -1) and GETDATE()
+and ProcessedDateTime = '1899-12-30 00:00:00.000'
+and CommsChannel = 'EFLOW'
+--and Sender <> 'Plant:10 Auto-Count:LRF-11'");
+
+    $outquepg = DB::connection('PMPG')->select("select count(StatusCode) as 'OUT' from ConnectorOutQueue
+where MessageDateTime between CONVERT(date, GETDATE() -1) and GETDATE()
+and CommsChannel = 'EFLOW'
+and ProcessedDateTime = '1899-12-30 00:00:00.000'");
+
+    $data = [
+        'PG' => [
+            'inque' => $inquepg[0]->IN,
+            'outque' => $outquepg[0]->OUT,
+        ]
+    ];
+    return response()->json($data);
+});
 
 
 //Hello ini update data
@@ -47,9 +65,9 @@ Route::get('/event', function() {
 
 // Route::get('/computer', [ComputerController::class, 'show']);
 
-Route::get('/kocak', function() {
-    return csrf_token();
-});
+// Route::get('/kocak', function() {
+//     return csrf_token();
+// });
 
 Route::get('/createDB', function() {
     return view('createDB');
