@@ -65,7 +65,7 @@ Route::get('/event', function() {
 
 // Route::get('/computer', [ComputerController::class, 'show']);
 
-// Route::get('/kocak', function() {
+// Route::get('/kocakbgt', function() {
 //     return csrf_token();
 // });
 

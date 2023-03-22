@@ -97,7 +97,8 @@
 
                         <Column header="Action" header-style="width: 4rem; text-align: center" body-style="text-align: center; overflow: visible">
                             <template #body>
-                                <!-- <Button label="Edit" class="p-button-warning p-button-sm" @click="edit(computers.)" /> -->
+                                <Button label="Edit" class="p-button-warning p-button-sm" />
+                                <Button label="Delete" class="p-button-danger p-button-sm" />
                             </template>
                         </Column>
                     </DataTable>
