@@ -20,6 +20,26 @@ use Illuminate\Support\Facades\DB;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/cekcek', function() {
+    $a = DB::connection('PMPG')->select("select TOP 1 a.Barcode, a.ContainerDescription, d.JobNumber, e.AutoCountNumber, a.TxnDateTime, b.ItemId as 'Scan'
+,b.OriginalAmount, b.CurrentAmount
+,case
+        when b.IsActive = 0 then 'Non Active'
+        when b.IsActive = 1 then 'Active'
+        else '-'
+end as 'Status'
+,c.ChangeSeq, c.[Name], c.ChangeDateTime, c.ProcessedDateTime, c.StatusCode
+from TxnSkid a
+left join MaterialItem b on a.Barcode=b.ItemId and a.LocationId = 0
+left join ImporterChange c on a.TxnSkidId=c.Id
+inner join Job d on a.JobId=d.JobId
+inner join AutoCount e on a.AutoCountId=e.AutoCountId
+where a.Barcode = 'PLG10005381885'
+order by c.ChangeSeq desc");
+    // dd(collect($a)->toJson());
+
+    return response()->json(collect($a)->toArray());
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
