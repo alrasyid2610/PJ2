@@ -35,6 +35,26 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="#" class="nav-link">
+              <i class="fa-solid fa-pencil nav-icon"></i>
+              <p>
+                Radius Case Record
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <!-- <a href="pages/mailbox/mailbox.html" class="nav-link"> -->
+                <!-- </a> -->
+                <router-link to="/radiusCaseMaster" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Input Histories</p>
+                </router-link>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="fa-solid fa-desktop nav-icon"></i>
               <p>
                 Computer

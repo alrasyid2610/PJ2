@@ -54,7 +54,7 @@ and ProcessedDateTime = '1899-12-30 00:00:00.000'");
 // Route::get('/license', [LicenseController::class, 'index']);
 
 
-Route::get('/testmail', [TestMailController::class, 'index']);
+// Route::get('/testmail', [TestMailController::class, 'index']);
 
 Route::get('/event', function() {
     $user = UserComputer::get()->toJson();
@@ -142,10 +142,3 @@ Route::get('/computer', [StockOpnameController::class, 'getData']);
 Route::any('/{any}', function() {
     return view('welcome');
 })->where('any', '.*');
-
-
-
-
-
-
-

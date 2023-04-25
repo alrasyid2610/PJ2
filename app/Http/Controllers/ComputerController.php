@@ -23,7 +23,8 @@ class ComputerController extends Controller
         } else if ($plant == "ALL") {
             return response()->json([ "data" => DB::table('computers')
             ->join('user_has_computers','computers.id', '=', 'user_has_computers.id_computer')
-            ->select('computers.*', 'user_has_computers.*')
+            // ->select('computers.*', 'user_has_computers.*', 'user_has_computers.id')
+            ->select('computers.*', 'user_has_computers.*', 'user_has_computers.id as id_user_has_computer')
             ->get()]);
         } else if ($plant == "PLG") {
             return response()->json([ "data" => DB::table('computers')

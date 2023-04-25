@@ -316,6 +316,7 @@ export default {
                 // console.log(that.computer.date_fa);
 
                 // that.computer.status_fix_asset = that.computer.date_fa == null ?
+                // console.log(data);
             })
             .catch(function (error) {
                 console.log(error);

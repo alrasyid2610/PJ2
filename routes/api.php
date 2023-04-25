@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\LicenseController;
+use App\Http\Controllers\RadiusCaseController;
+use App\Http\Controllers\RadiusErrorHistoryController;
 use App\Http\Controllers\StockOpnameController;
 use App\Http\Controllers\UserComputerController;
 use Illuminate\Support\Facades\DB;
@@ -37,4 +39,6 @@ Route::resource('userComputer', UserComputerController::class);
 Route::resource('/stock-opname', StockOpnameController::class);
 Route::resource('/li', StockOpnameController::class);
 Route::resource('/license', LicenseController::class);
+Route::resource('/radiusCase', RadiusCaseController::class);
+Route::resource('/radiusErrorHistory', RadiusErrorHistoryController::class);
 // Route::apiResources()
