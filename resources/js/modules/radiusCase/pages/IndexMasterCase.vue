@@ -125,6 +125,9 @@ const plants = ref([
 
 const { value: humanError } = useField('human_error');
 const { value: keterangan } = useField('keterangan');
+humanError.value = false;
+keterangan.value = ' ';
+
 
 // Option and validation for Site
 const { value: selectedSite, errorMessage: errorSite } = useField('site', Yup.object().required())

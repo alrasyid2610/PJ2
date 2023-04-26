@@ -45,6 +45,10 @@
               <li class="nav-item">
                 <!-- <a href="pages/mailbox/mailbox.html" class="nav-link"> -->
                 <!-- </a> -->
+                <router-link to="/radiusCaseDashboard" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Dashboard</p>
+                </router-link>
                 <router-link to="/radiusCaseMaster" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Input Histories</p>
