@@ -124,7 +124,6 @@ const sites = computed(() => {
 const { value: date_case, errorMessage: errorDate } = useField('date', Yup.string().required())
 
 const onSubmit = handleSubmit((values) => {
-    alert("okok");
     axios.post('http://127.0.0.1:8000/api/radiusErrorHistory',{
         case_name: selectedCase.value.case,
         date: moment(date_case.value).format('YYYY-M-D h:mm:ss'),

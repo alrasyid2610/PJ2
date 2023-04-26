@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="{{ asset('plugins') }}/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins') }}/summernote/summernote-bs4.min.css">
-  {{-- <link rel="stylesheet" href="{{ asset('build/assets/app.92dc62d7.css') }}"> --}}
+  {{-- <link rel="stylesheet" href="{{ asset('build/assets/app.96cc2e12.css') }}"> --}}
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -88,6 +88,8 @@
 <script src="{{ asset('dist') }}/js/pages/dashboard.js"></script>
 
 
-{{-- <script src="{{ asset('build/assets/app.2153a1eb.js') }}"></script> --}}
+{{-- <script src="{{ asset('build/assets/app.7c3c19f8.js') }}"></script>
+<script src="{{ asset('build/assets/auto.c7fd805c.js') }}"></script>
+<script src="{{ asset('build/assets/app.4ce71761.js') }}"></script> --}}
 </body>
 </html>
