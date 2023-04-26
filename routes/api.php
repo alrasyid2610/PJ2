@@ -9,6 +9,7 @@ use App\Http\Controllers\RadiusErrorHistoryController;
 use App\Http\Controllers\StockOpnameController;
 use App\Http\Controllers\UserComputerController;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel as EXCL;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,3 +63,7 @@ Route::resource('/license', LicenseController::class);
 Route::resource('/radiusCase', RadiusCaseController::class);
 Route::resource('/radiusErrorHistory', RadiusErrorHistoryController::class);
 // Route::apiResources()
+
+Route::get("/test22", function() {
+    // Excel::download(collect(["data"]), 'users.xlsx');
+});
