@@ -61,7 +61,7 @@ onMounted(() => {
 
     getData = async () => {
         try {
-            const resp = await axios.get('http://127.0.0.1:8000/api/radiusErrorHistory');
+            const resp = await axios.get('/api/radiusErrorHistory');
             // this.cases = resp.data;
             // dataCase.value = ;
             generateDataSet(resp.data)

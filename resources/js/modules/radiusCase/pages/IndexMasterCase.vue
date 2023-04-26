@@ -49,7 +49,7 @@
                             </card>
                         </form>
                 </section>
-                <section class="col-lg-8">
+                <section class="col-lg-8 md-mt-4">
                     <WeeklyReport />
                 </section>
             <!-- /.Left col -->
@@ -77,7 +77,7 @@ import WeeklyReport from "./../component/WeeklyReport.vue"
 onMounted(() => {
     const getCase = async () => {
             try {
-                const resp = await axios.get('http://127.0.0.1:8000/api/radiusCase');
+                const resp = await axios.get('/api/radiusCase');
                 // this.cases = resp.data;
                 cases.value = resp.data;
                 // console.log(cases.value);
@@ -125,7 +125,7 @@ const { value: date_case, errorMessage: errorDate } = useField('date', Yup.strin
 
 const onSubmit = handleSubmit((values) => {
     alert("okok");
-    axios.post('http://127.0.0.1:8000/api/radiusErrorHistory',{
+    axios.post('/api/radiusErrorHistory',{
         case_name: selectedCase.value.case,
         date: moment(date_case.value).format('YYYY-M-D h:mm:ss'),
         site: selectedSite.value.name,
