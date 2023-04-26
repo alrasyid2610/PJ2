@@ -49,7 +49,7 @@
                             </card>
                         </form>
                 </section>
-                <section class="col-lg-8 md-mt-4">
+                <section class="col-lg-8 mt-4 md:mt-0">
                     <WeeklyReport />
                 </section>
             <!-- /.Left col -->
