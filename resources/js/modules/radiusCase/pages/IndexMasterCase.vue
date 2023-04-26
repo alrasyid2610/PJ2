@@ -12,34 +12,46 @@
                             <card>
                                 <template #content>
                                     <div class="form-group">
-                                        <label for="case">Case</label>
+                                        <label for="case">Case <sup style="color: red">*</sup></label>
                                         <!-- <input-text class="p-inputtext-sm w-100 forn-control" placeholder="No EDP Fix Asset" v-model="case"></input-text> -->
                                         <Dropdown v-model="selectedCase" name="case" :options="cases" optionLabel="case" placeholder="Select a City" class="w-full w-100" :class="{ 'p-invalid': errorCase }" required />
                                         <small id="username2-help" class="p-error" v-if="errorCase">{{ errorCase || '&nbsp;' }}</small>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="plant">Plant</label>
+                                        <label for="plant">Plant <sup style="color: red">*</sup></label>
                                         <!-- <input-text class="p-inputtext-sm w-100 forn-control" placeholder="No EDP Fix Asset" v-model="case"></input-text> -->
                                         <Dropdown v-model="selectedPlant" :options="plants" optionLabel="name" placeholder="Select a Plant" class="w-full w-100" :class="{ 'p-invalid': errorPlant }" />
                                         <small id="username2-help" class="p-error" v-if="errorPlant">{{ errorPlant || '&nbsp;' }}</small>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="site">Site</label>
+                                        <label for="site">Site <sup style="color: red">*</sup></label>
                                         <!-- <input-text class="p-inputtext-sm w-100 forn-control" placeholder="No EDP Fix Asset" v-model="case"></input-text> -->
                                         <Dropdown v-model="selectedSite" name="site" :options="sites" optionLabel="name" placeholder="Select a Site" class="w-full w-100" :class="{ 'p-invalid': errorSite }" />
+                                        <small id="username2-help" v-if="selectedSite == null ? true : false">Pilih Plant terlebih dahulu</small>
                                         <small id="username2-help" class="p-error" v-if="errorSite">{{ errorSite || '&nbsp;' }}</small>
                                     </div>
 
-
-
-
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Tanggal FA</label>
+                                        <label for="exampleInputEmail1">Tanggal FA <sup style="color: red">*</sup></label>
                                         <!-- <input type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> -->
                                         <Calendar showTime showButtonBar hourFormat="24" class="w-100" v-model="date_case" name="date" :class="{ 'p-invalid': errorDate }" />
                                         <small id="username2-help" class="p-error" v-if="errorDate">{{ errorDate || '&nbsp;' }}</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="site">Human Error</label>
+                                        <div>
+                                            <InputSwitch v-model="humanError" name="human_error"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="site">Keterangan</label>
+                                        <div>
+                                            <Textarea v-model="keterangan" rows="3" class="w-100" name="keterangan"/>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -111,6 +123,9 @@ const plants = ref([
     {name: "KRW", value: "KRW"},
 ]);
 
+const { value: humanError } = useField('human_error');
+const { value: keterangan } = useField('keterangan');
+
 // Option and validation for Site
 const { value: selectedSite, errorMessage: errorSite } = useField('site', Yup.object().required())
 const sites = computed(() => {
@@ -128,7 +143,9 @@ const onSubmit = handleSubmit((values) => {
         case_name: selectedCase.value.case,
         date: moment(date_case.value).format('YYYY-M-D h:mm:ss'),
         site: selectedSite.value.name,
-        plant: selectedPlant.value.name
+        plant: selectedPlant.value.name,
+        human_error: humanError.value,
+        keterangan: keterangan.value
     })
     .then(function (response) {
         resetForm();

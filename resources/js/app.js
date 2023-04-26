@@ -36,6 +36,7 @@ import Tooltip from 'primevue/tooltip';                     //optional for row
 import Dialog from 'primevue/dialog';
 import DynamicDialog from 'primevue/dynamicdialog'; //component
 import DialogService from 'primevue/dialogservice'; //services
+import Textarea from 'primevue/textarea';
 // import 'primevue/resources/themes/saga-blue/theme.css'       //theme
 import 'primevue/resources/themes/lara-light-teal/theme.css'
 import 'primevue/resources/primevue.min.css'                 //core css
@@ -69,6 +70,7 @@ app.use(DialogService);
 
 app.component('Button', Button);
 app.component('InputText', InputText);
+app.component('Textarea', Textarea);
 app.component('Card', Card);
 app.component('Toast', Toast);
 app.component('Dropdown', Dropdown);
