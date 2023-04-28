@@ -44,6 +44,27 @@
 </template>
 
 <script setup>
+import axios from "axios";
+import { ref, onMounted, computed } from "vue";
+
+const cases = ref('');
+
+onMounted(() => {
+    const getCase = async () => {
+            try {
+                const resp = await axios.get('/api/radiusCase');
+                // this.cases = resp.data;
+                cases.value = resp.data;
+                console.log(cases.value);
+            } catch (err) {
+                // Handle Error Here
+                console.error(err);
+                toast.add({ severity: 'info', summary: "Form Submited", detail: err, life: 3000 });
+            }
+        };
+
+    getCase();
+})
 </script>
 
 <style scoped>

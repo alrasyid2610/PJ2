@@ -65,7 +65,7 @@ onMounted(() => {
             // this.cases = resp.data;
             // dataCase.value = ;
             generateDataSet(resp.data)
-            console.log(finalDataSet);
+            // console.log(finalDataSet);
 
             // chartData.value = setChartData();
             chartData.value = finalDataSet;
@@ -80,7 +80,7 @@ onMounted(() => {
             console.error(err);
         }
 
-        console.log("ahahaha")
+        // console.log("ahahaha")
     };
     getData();
 });
