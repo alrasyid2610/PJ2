@@ -1,41 +1,28 @@
 <template>
+    <!-- <h2>{{ casePerDay }}</h2> -->
     <Card>
         <template #header>
-            <Button icon="pi pi-refresh" class="ml-2 mt-2"  aria-label="Refresh" size="small" />
+            <div class="flex justify-content-between">
+                <h4 class="pt-3 pl-3">{{ titleName }}</h4>
+                <div class="pt-3 pr-3">
+                    <Button icon="pi pi-refresh"   aria-label="Refresh" size="small" />
+                </div>
+            </div>
         </template>
         <template #content>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-12">
+            <div v-if="casePerDay.length > 0 ? true : false" class="row">
+                <div class="col-lg-4 col-md-6 col-12 mt-3 md:mt-0" v-for="caseItem in casePerDay" :key="caseItem.case_name">
                     <div class="box">
-                        <h4>Item Not Found</h4>
                         <div class="number">
-                            5
+                            {{ caseItem.jumlah }}
                         </div>
+                        <h4>{{ caseItem.case_name }}</h4>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="box">
-                        <h4>Item Not Found</h4>
-                        <div class="number">
-                            5
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="box">
-                        <h4>Item Not Found</h4>
-                        <div class="number">
-                            5
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="box">
-                        <h4>Item Not Found</h4>
-                        <div class="number">
-                            5
-                        </div>
-                    </div>
+            </div>
+            <div class="col-12" v-else>
+                <div class="alert alert-primary w-100" role="alert">
+                    Tidak ada data hari ini.
                 </div>
             </div>
         </template>
@@ -47,24 +34,12 @@
 import axios from "axios";
 import { ref, onMounted, computed } from "vue";
 
+const props = defineProps({
+  casePerDay: {},
+  titleName: ''
+});
+
 const cases = ref('');
-
-onMounted(() => {
-    const getCase = async () => {
-            try {
-                const resp = await axios.get('/api/radiusCase');
-                // this.cases = resp.data;
-                cases.value = resp.data;
-                console.log(cases.value);
-            } catch (err) {
-                // Handle Error Here
-                console.error(err);
-                toast.add({ severity: 'info', summary: "Form Submited", detail: err, life: 3000 });
-            }
-        };
-
-    getCase();
-})
 </script>
 
 <style scoped>
@@ -75,9 +50,11 @@ onMounted(() => {
 }
 
 .box {
-    background-color: rgba(57, 204, 44, 0.685);
-    padding: 8px 12px 24px;
+    background-color: #C5F8EB;
+    padding: 0;
     border-radius: 4px;
+    padding: 30px 0;
+    color: #650000;
     box-shadow: -3px 4px 8px #b1b1b173;
 }
 
@@ -86,7 +63,8 @@ onMounted(() => {
     text-align: center;
     text-transform: capitalize;
     margin: 0;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .box .number {

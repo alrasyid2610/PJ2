@@ -25,6 +25,7 @@
         "datatables.net": "^1.12.1",
         "datatables.net-dt": "^1.12.1",
         "flatted": "^3.2.7",
+        "gojs": "^2.3.5",
         "jquery": "^3.6.0",
         "moment": "^2.29.4",
         "primeflex": "^3.2.1",

@@ -135,6 +135,22 @@ onMounted(() => {
         };
 
     getCase();
+
+    const getCasePerDay = async () => {
+        try {
+            const resp = await axios.get('/api/getRadiusCase/getCasePerDay');
+            // this.cases = resp.data;
+            // cases.value = resp.data;
+            console.log(resp)
+            // console.log(cases.value);
+        } catch (err) {
+            // Handle Error Here
+            console.error(err);
+            toast.add({ severity: 'info', summary: "Form Submited", detail: err, life: 3000 });
+        }
+    }
+
+    getCasePerDay();
 })
 
 // use toast provider

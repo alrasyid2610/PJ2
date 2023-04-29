@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RadiusCase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RadiusCaseController extends Controller
 {
@@ -83,5 +84,16 @@ class RadiusCaseController extends Controller
     public function destroy(RadiusCase $radiusCase)
     {
         //
+    }
+
+    public function getCasePerDay(Request $request)
+    {
+        if(isset($request->day)) {
+            $data = DB::connection('mysql')->select("SELECT case_name, count(case_name) as 'jumlah' FROM radius_error_histories WHERE date BETWEEN DATE_FORMAT(NOW() - INTERVAL $request->day DAY, '%Y-%m-%d') AND NOW() GROUP BY case_name");
+            return $data;
+        } else {
+            $data = DB::connection('mysql')->select("SELECT case_name, count(case_name) as 'jumlah' FROM radius_error_histories WHERE date BETWEEN DATE_FORMAT(NOW() - INTERVAL 1 DAY, '%Y-%m-%d') AND NOW() GROUP BY case_name");
+            return response()->json($data);
+        }
     }
 }
