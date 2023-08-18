@@ -4,12 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\LicenseController;
+use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\RadiusCaseController;
 use App\Http\Controllers\RadiusErrorHistoryController;
 use App\Http\Controllers\StockOpnameController;
 use App\Http\Controllers\UserComputerController;
 use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel as EXCL;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +63,7 @@ Route::resource('/license', LicenseController::class);
 Route::get('/getRadiusCase/getCasePerDay', [RadiusCaseController::class, 'getCasePerDay']);
 Route::resource('/radiusCase', RadiusCaseController::class);
 Route::resource('/radiusErrorHistory', RadiusErrorHistoryController::class);
+Route::resource('/networkDNP', NetworkController::class);
 // Route::apiResources()
 
 Route::get("/test22", function() {
