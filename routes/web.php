@@ -10,6 +10,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Stevebauman\Wmi\wmi as Wmi;
+
+
 
 
 // Script untuk connect ke DB Radius
@@ -25,9 +28,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('', function () {
-//     return view('welcome');
-// });
+Route::get('wmi', function () {
+    $wmi = new Wmi($host = '172.16.128.3', $username = 'administrator', $password = 'edpdnp');
+    $objRefresher = new COM("WbemScripting.Swbemrefresher");
+    if($connection = $wmi->connect('root\\cimv2')) {
+        echo "Cool! We're connected. <br>";
+        $query = $wmi->getConnection()->newQuery();
+        $results = $query->from('Win32_PerfFormattedData_PerfProc_Process')
+        ->get();
+        foreach ($results as $d) {
+            echo $d->Name ." " . $d->PercentProcessorTime .  "% " . $d->ThreadCount . "<br>" ;
+        }
+    } else {
+        echo "Uh oh, looks like we couldn't connect.";
+    }
+});
+
+Route::get('/inventory', function() {
+    return view('2test');
+});
 Route::get('/kocak', function() {
     // $a = DB::connection('PMPG')->table('materialItem')->take(100)->get();
     $inquepg = DB::connection('PMPG')->select("select count(StatusCode) as 'IN' from ConnectorInQueue

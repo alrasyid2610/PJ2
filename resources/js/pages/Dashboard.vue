@@ -38,6 +38,7 @@
             </div> -->
 
             <div class="row">
+                <!-- <div class="col-12"><h2>kocak</h2></div> -->
                 <div class="col-12">
                     <!-- <Dropdown v-model="selectedPlant" :options="plants" optionLabel="name" placeholder="Select a Plant" v-on:change="testchange"/> -->
                     <DataTable
@@ -50,7 +51,7 @@
                         currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
                         paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
                         responsiveLayout="scroll"
-                        :globalFilterFields="['id_user_has_computer', 'name','pc_name','processor','os','ram', 'hdd', 'ip', 'location']"
+                        :globalFilterFields="['id_user_has_computer', 'name','section','pc_name','processor','os','ram', 'hdd', 'ip', 'location']"
                         v-model:filters="filters"
                         removableSort
                         >
@@ -80,6 +81,7 @@
                         <!-- <Column v-for="col of columns" :field="col.field" :header="col.header" :key="col.field"></Column> -->
                         <Column :sortable="true" field="id_user_has_computer" header="ID"></Column>
                         <Column :sortable="true" field="name" header="NAME"></Column>
+                        <Column :sortable="true" field="section" header="Section"></Column>
                         <Column field="pc_name" header="PC Name" :sortable="true">
                             <template #filter>
                                 <InputText type="text" v-model="filters['name']" class="p-column-filter" placeholder="Search by name"/>
@@ -118,11 +120,6 @@
             <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
     </section>
-    <!-- <Dialog v-model:visible="visible" modal header="Edit Data Computer" :style="{ width: '50vw' }" :breakpoints="{ '960px': '75vw', '641px': '90vw' }">
-        <form action="">
-            <CardFormUser @submit="submit" />
-        </form>
-    </Dialog> -->
     <div class="card flex justify-content-center">
         <Button label="Select a Product" icon="pi pi-search" @click="showForm" />
         <Toast />

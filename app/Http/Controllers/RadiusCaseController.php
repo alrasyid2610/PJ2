@@ -92,7 +92,7 @@ class RadiusCaseController extends Controller
             $data = DB::connection('mysql')->select("SELECT case_name, count(case_name) as 'jumlah' FROM radius_error_histories WHERE date BETWEEN DATE_FORMAT(NOW() - INTERVAL $request->day DAY, '%Y-%m-%d') AND NOW() GROUP BY case_name");
             return $data;
         } else {
-            $data = DB::connection('mysql')->select("SELECT case_name, count(case_name) as 'jumlah' FROM radius_error_histories WHERE date BETWEEN DATE_FORMAT(NOW() - INTERVAL 1 DAY, '%Y-%m-%d') AND NOW() GROUP BY case_name");
+            $data = DB::connection('mysql')->select("SELECT case_name, count(case_name) as 'jumlah' FROM radius_error_histories WHERE date BETWEEN DATE_FORMAT(NOW() - INTERVAL 0 DAY, '%Y-%m-%d') AND NOW() GROUP BY case_name");
             return response()->json($data);
         }
     }

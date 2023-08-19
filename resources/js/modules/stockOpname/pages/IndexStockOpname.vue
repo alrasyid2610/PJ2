@@ -109,6 +109,7 @@ export default {
             try {
                 const resp = await axios.get('http://127.0.0.1:8000/api/computer');
                 this.data_computers = resp.data;
+                console.log(resp.data)
             } catch (err) {
                 // Handle Error Here
                 console.error(err);

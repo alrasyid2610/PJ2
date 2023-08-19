@@ -194,7 +194,6 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        // Abram\Odbc\ODBCServiceProvider::class,
         // Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 

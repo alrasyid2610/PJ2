@@ -1,7 +1,10 @@
 <template>
     <Card>
         <template #header>
-            <Button icon="pi pi-refresh" class="ml-2 mt-2"  aria-label="Refresh" size="small" @click="bi" />
+            <div class="flex justify-content-between">
+                <h4 class="pt-3 pl-3">{{ titleName || "All History" }}</h4>
+                <Button icon="pi pi-refresh" class="ml-2 mt-2"  aria-label="Refresh" size="small" @click="bi" />
+            </div>
         </template>
         <template #content>
             <Chart
@@ -24,8 +27,8 @@ import { scaleThreshold } from 'd3-scale';
 function palette(min, max) {
     const d = (max-min)/4;
     return scaleThreshold()
-    .domain([min + d*1,min + d*2,min + d*3])
-    .range(['#00429d', '#96ffea', '#ff9688', '#005966']);
+    .domain([min + d*1,min + d*2,min + d*3, min + d*4, min + d*5, , min + d*6])
+    .range(['#00429d', '#96ffea', '#ff9688', '#005966', 'yellow']);
 }
 
 let l = palette(0, 100);
@@ -35,7 +38,7 @@ let finalDatase
 
 onMounted(() => {
     let finalDataSet = collect();
-    let j = chroma.scale(['red', 'green', 'blue']).domain([0,100]);
+    let j = chroma.scale(['red', 'green', 'blue', 'yellow']).domain([0,100]);
 
     dataFinal = collect([]);
     finalDatase = null;
@@ -47,8 +50,8 @@ onMounted(() => {
             dataFinal.push({
                 label: key,
                 data: [item.count()],
-                backgroundColor: l(20*jumlah),
-                borderColor: l(20*jumlah),
+                backgroundColor: l(23*jumlah),
+                borderColor: l(23*jumlah),
             })
             if(jumlah == a.count()) {
                 jumlah--;
@@ -56,7 +59,7 @@ onMounted(() => {
             jumlah++;
         })
 
-        finalDataSet = collect({labels: ["7 Days"], datasets: dataFinal.toArray()}).all();
+        finalDataSet = collect({labels: ["All History"], datasets: dataFinal.toArray()}).all();
     }
 
     getData = async () => {
@@ -102,7 +105,7 @@ const setChartData = () => {
     const documentStyle = getComputedStyle(document.documentElement);
 
     return {
-        labels: ['25-04-2023 s/d 2-5-2023 | 7 Days'],
+        labels: ['25-04-2023 s/d 2-5-2023 | '],
         datasets: [
             {
                 label: 'Database Time Out',

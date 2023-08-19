@@ -14,6 +14,8 @@ class RadiusErrorHistoryController extends Controller
      */
     public function index()
     {
+        // return response()->json(['nama' => "harun"]);
+        // RadiusErrorHistories::where()-?
         return response()->json(RadiusErrorHistories::get());
     }
 

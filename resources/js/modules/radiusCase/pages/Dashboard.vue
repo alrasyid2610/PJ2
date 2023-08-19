@@ -7,19 +7,13 @@
                 <div class="col-12">
                     <h3>Dashboard Radius <Button icon="pi pi-plus" severity="info" aria-label="Notification" size="small" /> </h3>
                 </div>
-                <section class="col-lg-6">
-                    <div class="row">
-                        <div class="col-12">
-                            <DayReport :case-per-day="casePerDay" title-name="Yesterday" day="1"/>
-                        </div>
-
-                        <div class="col-12">
-                            <DayReport :case-per-day="casePer7Day" title-name="7 Days" day="7"/>
-                        </div>
-                    </div>
-                </section>
-                <section class="col-lg-6 mt-4 md:mt-0">
+                <section class="col-lg-12 mt-4 md:mt-0">
                     <WeeklyReport />
+                </section>
+                <section class="col-lg-12">
+                    <div class="col-12">
+                        <DayReport :case-per-day="casePer7Day" title-name="7 Days" day="7"/>
+                    </div>
                 </section>
             <!-- /.Left col -->
             </div>
@@ -42,11 +36,26 @@ import { onMounted, ref } from "vue";
 // test
 const namas = ref('');
 const casePerDay = ref('')
+const caseYesterday = ref('')
 const casePer7Day = ref('')
 // end test
 
 
 onMounted(() => {
+    const getCaseYesterday = async () => {
+        try {
+            const resp = await axios.get('/api/getRadiusCase/getCasePerDay?day=1');
+            caseYesterday.value = resp.data;
+            // cases.value = resp.data;
+            // console.log(resp)
+            // console.log(cases.value);
+        } catch (err) {
+            // Handle Error Here
+            console.error(err);
+            toast.add({ severity: 'info', summary: "Form Submited", detail: err, life: 3000 });
+        }
+    }
+
     const getCasePerDay = async () => {
         try {
             const resp = await axios.get('/api/getRadiusCase/getCasePerDay');
@@ -90,6 +99,7 @@ onMounted(() => {
 
 
     getCases();
+    getCaseYesterday();
     getCasePerDay();
     getCasePer7Day();
 })

@@ -17,5 +17,5 @@
 <script setup>
 import * as go from "gojs"
 
-var myDiagram = new go.Diagram("myDiagramDiv");
+// var myDiagram = new go.Diagram("myDiagramDiv");
 </script>
