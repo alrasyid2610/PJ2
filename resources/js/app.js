@@ -7,6 +7,7 @@ import App from "./app.vue";
 import {routerStockOpname} from "./modules/stockOpname/router.js";
 import {routerLicense} from "./modules/license/router";
 import {routerRadiusCase} from "./modules/radiusCase/router.js"
+import {routerNetworkDNP} from "./modules/networkDNP/router.js"
 // End ROuter
 
 import { Axios } from 'axios';
@@ -42,6 +43,8 @@ import 'primevue/resources/themes/lara-light-teal/theme.css'
 import 'primevue/resources/primevue.min.css'                 //core css
 import 'primeicons/primeicons.css'                           //icons
 import 'primeflex/primeflex.css'
+import TabView from 'primevue/tabview';
+import TabPanel from 'primevue/tabpanel';
 
 
 
@@ -52,7 +55,7 @@ const routes = [
     },
     ...routerStockOpname,
     ...routerLicense,
-    ...routerRadiusCase
+    ...routerNetworkDNP
 ];
 
 const router = createRouter({
@@ -68,6 +71,8 @@ app.use(ToastService);
 app.use(DialogService);
 
 
+app.component('TabView', TabView);
+app.component('TabPanel', TabPanel);
 app.component('Button', Button);
 app.component('InputText', InputText);
 app.component('Textarea', Textarea);

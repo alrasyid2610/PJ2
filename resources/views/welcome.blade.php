@@ -91,6 +91,5 @@
 <script src="{{ asset('dist') }}/js/pages/dashboard.js"></script>
 
 
-{{-- <script src="{{ asset('build/assets/app.2153a1eb.js') }}"></script> --}}
 </body>
 </html>
