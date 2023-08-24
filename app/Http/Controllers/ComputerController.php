@@ -94,8 +94,13 @@ class ComputerController extends Controller
      */
     public function show(Computer $computer, Request $request)
     {
-        return $request->id;
-        return $computer->toJson();
+        return response()->json([ "data" => DB::table('computers')
+            ->join('user_has_computers','computers.id', '=', 'user_has_computers.id_computer')
+            ->join('user_computers', 'user_has_computers.id_user', '=', 'user_computers.id')
+            // ->select('computers.*', 'user_has_computers.*', 'user_has_computers.id')
+            ->select('user_computers.*', 'computers.*', 'user_has_computers.*', 'user_has_computers.id as id_user_has_computer')
+            ->where('user_has_computers.id', '=', '19')
+            ->get()]);
     }
 
     /**

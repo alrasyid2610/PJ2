@@ -94,6 +94,8 @@ import {sectionArray, factory} from "../assets/userDatabaseData.js";
 
 export default {
     props: ['id'],
+    inject: ['dialogRef'],
+
     components: { Button, CardFormUser, CardFormComputer },
     provide() {
         return {
@@ -128,7 +130,26 @@ export default {
                 {name: 'KRW', code: 'KRW'},
             ],
             data_computers: null,
+            id: 1
         }
+    },
+    mounted() {
+        const data = this.dialogRef.data; // {user: 'primetime'}
+        this.id = data.id;
+
+        axios.get('/api/computer/' + data.id)
+            .then(function (response) {
+                console.log(response.data)
+                // that.computers = response.data.data
+                // console.log(that.computers)
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
     },
 
     methods: {

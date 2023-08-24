@@ -255,9 +255,10 @@ export default {
     },
     methods: {
         showForm(event, id) {
+            console.log("hahaha " + id);
             const dialogRef = this.$dialog.open(UpdateStockOpname, {
                 data: {
-                    kocak: id
+                    id: 19
                 },
                 props: {
                     header: 'Product List',

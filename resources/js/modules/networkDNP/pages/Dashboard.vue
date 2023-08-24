@@ -5,7 +5,7 @@
             <div class="row">
                 <!-- Left col -->
                 <div class="col-12">
-                    <h3>Dashboard Network <Button icon="pi pi-plus" severity="info" aria-label="Notification" size="small" /> </h3>
+                    <h3>Dashboard Network <!-- <Button icon="pi pi-plus" severity="info" aria-label="Notification" size="small" /> --> </h3>
                 </div>
                 <section class="col-lg-12">
                     <div class="card">

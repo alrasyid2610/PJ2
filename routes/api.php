@@ -58,8 +58,9 @@ Route::resource('computer', ComputerController::class);
 Route::get('computer/getComputerPlant/site/{plant?}', [ComputerController::class, 'getComputerPlant']);
 Route::resource('userComputer', UserComputerController::class);
 Route::resource('/stock-opname', StockOpnameController::class);
-Route::resource('/li', StockOpnameController::class);
+// Route::resource('/li', StockOpnameController::class);
 Route::resource('/license', LicenseController::class);
+
 Route::get('/getRadiusCase/getCasePerDay', [RadiusCaseController::class, 'getCasePerDay']);
 Route::resource('/radiusCase', RadiusCaseController::class);
 Route::resource('/radiusErrorHistory', RadiusErrorHistoryController::class);
